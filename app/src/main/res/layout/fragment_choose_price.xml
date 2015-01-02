@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ui_match_background">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <view
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            class="org.owls.opentriad.view.CardView"
+            android:id="@+id/view"
+            android:background="@drawable/bloodsoul"
+            android:layout_margin="5dp" />
+
+        <view
+            class="org.owls.opentriad.view.CardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/view2"
+            android:background="@drawable/bloodsoul"
+            android:layout_margin="5dp" />
+
+        <view
+            class="org.owls.opentriad.view.CardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/view3"
+            android:background="@drawable/bloodsoul"
+            android:layout_margin="5dp" />
+
+        <view
+            class="org.owls.opentriad.view.CardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/view4"
+            android:background="@drawable/bloodsoul"
+            android:layout_margin="5dp" />
+
+        <view
+            class="org.owls.opentriad.view.CardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/view5"
+            android:background="@drawable/bloodsoul"
+            android:layout_margin="5dp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose one card"
+        android:id="@+id/textView"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        style="@style/view_final_fantasy_textbox"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp" />
+
+</RelativeLayout>

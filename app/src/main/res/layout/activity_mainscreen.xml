@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ui_match_background" >
+
+    <RelativeLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:id="@+id/main_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/textbox"
+            android:padding="15dp"
+            android:orientation="vertical">
+
+            <Button
+                android:text="@string/main_menu_quick_match"
+                android:id="@+id/main_menu_new_game"
+                style="@style/style_menu_button" />
+
+            <Button
+                style="@style/style_menu_button"
+                android:text="@string/main_menu_profile"
+                android:id="@+id/main_menu_profile"
+                android:enabled="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:text="@string/main_menu_options"
+                android:id="@+id/main_menu_options"
+                style="@style/style_menu_button"
+                android:enabled="false" />
+
+            <Button
+                android:text="@string/main_menu_leave_game"
+                android:id="@+id/main_menu_leave_game"
+                style="@style/style_menu_button" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

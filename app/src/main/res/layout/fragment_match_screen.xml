@@ -1,0 +1,95 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ui_match_background"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    tools:context=".MatchActivity"
+    android:longClickable="true"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <RelativeLayout
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:paddingBottom="32dp"
+        android:id="@+id/relativeLayout2">
+
+        <org.owls.opentriad.view.DeckView
+            android:id="@+id/opponent_deck"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/opponent_score"
+            android:layout_alignLeft="@+id/opponent_score"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/opponent_score"
+            android:tag="opponent" />
+
+        <TextView
+            android:id="@+id/opponent_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="30sp"
+            android:background="@color/background"
+            android:textStyle="italic"
+            android:clickable="false"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="32dp"
+        android:id="@+id/relativeLayout">
+
+        <org.owls.opentriad.view.DeckView
+            android:id="@+id/player_deck"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/player_score"
+            android:layout_alignLeft="@+id/player_score"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/player_score"
+            android:tag="player" />
+
+        <TextView
+            android:id="@+id/player_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="30sp"
+            android:background="@color/background"
+            android:textStyle="italic"
+            android:clickable="false"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+    <org.owls.opentriad.view.BattleFieldView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/cardboardView">
+
+    </org.owls.opentriad.view.BattleFieldView>
+
+    <TextView
+        android:id="@+id/gameLog"
+        android:text="Hello World!"
+        style="@style/view_final_fantasy_textbox" />
+
+
+</RelativeLayout>

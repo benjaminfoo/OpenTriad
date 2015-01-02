@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="level_one">
+        <item>bloodsoul-2-1-6-1</item>
+        <item>caterchipillar-4-2-4-3</item>
+        <item>gayla-2-1-4-4</item>
+        <item>gesper-1-5-4-1</item>
+        <item>redbat-6-1-1-2</item>
+    </array>
+
+</resources>

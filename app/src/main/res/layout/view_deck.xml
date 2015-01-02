@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <org.owls.opentriad.view.CardView
+        android:id="@+id/deck_card_1"
+        style="@style/style_deckview" />
+
+    <org.owls.opentriad.view.CardView
+        android:id="@+id/deck_card_2"
+        style="@style/style_deckview" />
+
+    <org.owls.opentriad.view.CardView
+        android:id="@+id/deck_card_3"
+        style="@style/style_deckview" />
+
+    <org.owls.opentriad.view.CardView
+        android:id="@+id/deck_card_4"
+        style="@style/style_deckview" />
+
+    <org.owls.opentriad.view.CardView
+        android:id="@+id/deck_card_5"
+        style="@style/style_deckview" />
+
+</LinearLayout>
