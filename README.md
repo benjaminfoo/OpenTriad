@@ -15,7 +15,7 @@ TODO
 =========
  - Implement stats (wins, looses, draws)
  - Implement userprofiles and deck management
- - Implement the rest of the cards (only 5 cards are available right now, I'd love to see a solution with an embedded sqlite database)
+ - Implement the rest of the cards and a solution to switch between background colors (red = enemy card, blue = player card)
  - Implement animations
  - Implement original ruleset (like same, open, etc...)
  - Replace ripped content with open source / free to use content
