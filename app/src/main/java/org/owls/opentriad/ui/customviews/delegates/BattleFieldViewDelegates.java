@@ -1,7 +1,7 @@
-package org.owls.opentriad.view.delegates;
+package org.owls.opentriad.ui.customviews.delegates;
 
 import org.owls.opentriad.modell.Competitor;
-import org.owls.opentriad.view.CardView;
+import org.owls.opentriad.ui.customviews.CardView;
 
 /**
  * Created by Benni on 17.12.2014.

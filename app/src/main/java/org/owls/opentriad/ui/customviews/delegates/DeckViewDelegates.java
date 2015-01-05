@@ -1,4 +1,4 @@
-package org.owls.opentriad.view.delegates;
+package org.owls.opentriad.ui.customviews.delegates;
 
 import org.owls.opentriad.modell.Card;
 

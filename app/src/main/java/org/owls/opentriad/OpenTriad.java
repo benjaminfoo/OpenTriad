@@ -44,4 +44,8 @@ public class OpenTriad {
      */
     public final static int AI_TIME_PER_TURN = 750;
 
+    /**
+     * The name for the sharedpreferences-file.
+     */
+    public static final String SHARED_PREFS_KEY = OpenTriad.class.getName();
 }

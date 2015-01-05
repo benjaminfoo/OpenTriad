@@ -64,7 +64,6 @@ public class CardController {
         return new Card(cardName, powers, owner);
     }
 
-    // if playerCard, the owner of the card is the player if not, its the opponent card.
     public Deck generateDeck(Competitor owner) {
         List<Card> cards = new ArrayList<Card>(OpenTriad.DECK_MAX_CARD_COUNT);
         for (int index = 0; index < OpenTriad.DECK_MAX_CARD_COUNT; index++) {

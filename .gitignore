@@ -31,3 +31,4 @@ proguard/
 
 # OSX related
 .DS_Store
+.idea/

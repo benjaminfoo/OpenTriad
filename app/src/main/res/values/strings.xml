@@ -8,5 +8,14 @@
     <string name="main_menu_options">Options</string>
     <string name="main_menu_profile">Profile</string>
     <string name="main_menu_leave_game">Leave Game</string>
+    <string name="user_profile_hint_name">Name</string>
+    <string name="user_profile_headline">Profile</string>
+    <string name="user_profile_stats_headline">Statistics</string>
+    <string name="user_profile_stats_wins">Wins</string>
+    <string name="user_profile_stats_looses">Looses</string>
+    <string name="user_profile_stats_draws">Draws</string>
+    <string name="ingame_competitor_set_card"> set card!</string>
+    <string name="ingame_game_result_draw">Draw!</string>
+    <string name="ingame_game_result_competitor_wins_the_game"> wins the game!</string>
 
 </resources>

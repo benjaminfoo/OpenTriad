@@ -1,4 +1,4 @@
-package org.owls.opentriad.view;
+package org.owls.opentriad.ui.customviews;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,7 +11,7 @@ import org.owls.opentriad.modell.BattleField;
 import org.owls.opentriad.modell.Card;
 import org.owls.opentriad.modell.Competitor;
 import org.owls.opentriad.modell.delegates.BattleFieldDelegates;
-import org.owls.opentriad.view.delegates.BattleFieldViewDelegates;
+import org.owls.opentriad.ui.customviews.delegates.BattleFieldViewDelegates;
 
 /**
  * @author Benjamin Wulfert (wulfert.benjamin@googlemail.com)
