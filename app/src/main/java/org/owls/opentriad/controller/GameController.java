@@ -1,18 +1,20 @@
 package org.owls.opentriad.controller;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
 import org.owls.opentriad.R;
 import org.owls.opentriad.OpenTriad;
-import org.owls.opentriad.ai.Bot;
+import org.owls.opentriad.modell.UserProfile;
+import org.owls.opentriad.modell.ai.RandomBot;
 import org.owls.opentriad.modell.Card;
 import org.owls.opentriad.modell.Competitor;
-import org.owls.opentriad.view.CardView;
-import org.owls.opentriad.view.BattleFieldView;
-import org.owls.opentriad.view.DeckView;
-import org.owls.opentriad.view.delegates.BattleFieldViewDelegates;
-import org.owls.opentriad.view.delegates.DeckViewDelegates;
+import org.owls.opentriad.ui.customviews.CardView;
+import org.owls.opentriad.ui.customviews.BattleFieldView;
+import org.owls.opentriad.ui.customviews.DeckView;
+import org.owls.opentriad.ui.customviews.delegates.BattleFieldViewDelegates;
+import org.owls.opentriad.ui.customviews.delegates.DeckViewDelegates;
 
 /**
  * @author Benjamin Wulfert (wulfert.benjamin@googlemail.com)
@@ -25,7 +27,10 @@ import org.owls.opentriad.view.delegates.DeckViewDelegates;
  */
 public class GameController implements DeckViewDelegates, BattleFieldViewDelegates {
 
+    // root layout of the mainactivity
+    // this is also used for context references!
     public View activityView;
+    private Context context;
 
     //
     public BattleFieldView battleFieldView;
@@ -33,12 +38,15 @@ public class GameController implements DeckViewDelegates, BattleFieldViewDelegat
     //
     public CardController cardController;
 
+    //
+    public UserProfileController userProfileController;
+
     // the main player
     public Competitor player;
     public DeckView playerDeck;
 
     // the opponent
-    public Bot opponent;
+    public RandomBot opponent;
     public DeckView opponentDeck;
 
     // the current entity that controls the game flow
@@ -48,15 +56,18 @@ public class GameController implements DeckViewDelegates, BattleFieldViewDelegat
 
     public GameController(View activityView) {
         this.activityView = activityView;
+        this.context = activityView.getContext();
 
         this.gameLog = (TextView) activityView.findViewById(R.id.gameLog);
         this.battleFieldView = (BattleFieldView) activityView.findViewById(R.id.cardboardView);
 
         this.cardController = new CardController(activityView.getContext());
 
-        this.player = new Competitor("Player", cardController.generateDeck(player));
+        this.userProfileController = new UserProfileController(context);
 
-        this.opponent = new Bot("Bot B", cardController.generateDeck(opponent));
+        this.player = new Competitor(userProfileController.loadUserprofile().name, cardController.generateDeck(player));
+
+        this.opponent = new RandomBot("Bot B", cardController.generateDeck(opponent));
 
         playerDeck = (DeckView) activityView.findViewById(R.id.player_deck);
         playerDeck.initializePlayerData(player);
@@ -106,13 +117,13 @@ public class GameController implements DeckViewDelegates, BattleFieldViewDelegat
             gameLog.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Bot bot = (Bot) current;
+                    RandomBot randomBot = (RandomBot) current;
                     DeckView currentDeck = current == player ? playerDeck : opponentDeck;
-                    bot.computeActiveCard(currentDeck);
+                    randomBot.computeActiveCard(currentDeck);
 
-                    int[] position = bot.computeCardPosition();
+                    int[] position = randomBot.computeCardPosition();
                     while (battleFieldView.positionAlreadyInUse(position[0], position[1])){
-                        position = bot.computeCardPosition();
+                        position = randomBot.computeCardPosition();
                     }
 
                     battleFieldView.battleField.setCard(position[0], position[1], currentDeck.useActiveCard());
@@ -126,7 +137,7 @@ public class GameController implements DeckViewDelegates, BattleFieldViewDelegat
 
     public void endCurrentTurn(){
         current.active = false;
-        gameLog.setText(current.name + " set card!");
+        gameLog.setText(current.name + context.getString(R.string.ingame_competitor_set_card));
 
         if(current == player){
             current = opponent;
@@ -140,10 +151,23 @@ public class GameController implements DeckViewDelegates, BattleFieldViewDelegat
             boolean playerWon = player.score > opponent.score;
 
             if(draw){
-                gameLog.setText("Draw!");
+                gameLog.setText(context.getString(R.string.ingame_game_result_draw));
             } else {
-                gameLog.setText((playerWon ? player.name : opponent.name ) + " wins the game!");
+                gameLog.setText((playerWon ? player.name : opponent.name) + context.getString(R.string.ingame_game_result_competitor_wins_the_game));
             }
+
+            UserProfileController userProfileController = new UserProfileController(activityView.getContext());
+            UserProfile defaultUserprofile = userProfileController.loadUserprofile();
+
+            if (draw){
+                defaultUserprofile.draws++;
+            }else if(playerWon){
+                defaultUserprofile.wins++;
+            } else {
+                defaultUserprofile.looses++;
+            }
+
+            userProfileController.saveUserProfile(defaultUserprofile);
 
         } else {
             startNewTurn();
@@ -159,5 +183,6 @@ public class GameController implements DeckViewDelegates, BattleFieldViewDelegat
     public void onScoreChanged(Competitor owner, int newScore) {
         TextView score = (TextView) activityView.findViewById(owner == player ? R.id.player_score : R.id.opponent_score);
         score.setText("" + newScore);
+
     }
 }

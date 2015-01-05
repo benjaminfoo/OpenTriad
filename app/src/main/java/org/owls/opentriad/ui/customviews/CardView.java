@@ -1,4 +1,4 @@
-package org.owls.opentriad.view;
+package org.owls.opentriad.ui.customviews;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

@@ -15,7 +15,7 @@
     </style>
 
     <style name="style_menu_button">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">10dp</item>
         <item name="android:textColor">@android:color/primary_text_dark</item>
@@ -36,6 +36,23 @@
         <item name="android:clickable">false</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_marginBottom">2dp</item>
+    </style>
+
+    <style name="style_userprofile_stats">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="style_userprofile_headline" parent="style_userprofile_stats">
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
     </style>
 
 </resources>

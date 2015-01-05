@@ -1,11 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MatchActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ui_match_background"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    tools:context=".MatchActivity"
     android:longClickable="true"
     android:paddingTop="@dimen/activity_vertical_margin">
 
@@ -15,7 +15,7 @@
         android:paddingBottom="32dp"
         android:id="@+id/relativeLayout2">
 
-        <org.owls.opentriad.view.DeckView
+        <org.owls.opentriad.ui.customviews.DeckView
             android:id="@+id/opponent_deck"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -49,7 +49,7 @@
         android:paddingBottom="32dp"
         android:id="@+id/relativeLayout">
 
-        <org.owls.opentriad.view.DeckView
+        <org.owls.opentriad.ui.customviews.DeckView
             android:id="@+id/player_deck"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -77,14 +77,14 @@
 
     </RelativeLayout>
 
-    <org.owls.opentriad.view.BattleFieldView
+    <org.owls.opentriad.ui.customviews.BattleFieldView
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:id="@+id/cardboardView">
 
-    </org.owls.opentriad.view.BattleFieldView>
+    </org.owls.opentriad.ui.customviews.BattleFieldView>
 
     <TextView
         android:id="@+id/gameLog"

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <set>
+        <objectAnimator
+            android:interpolator="@android:interpolator/decelerate_quad"
+            android:valueFrom="1"
+            android:valueTo="0"
+            android:propertyName="scaleX"
+            android:duration="@android:integer/config_mediumAnimTime"
+            />
+        <objectAnimator
+            android:valueFrom="0.5"
+            android:valueTo="0.5"
+            android:propertyName="pivotY"
+            android:duration="@android:integer/config_mediumAnimTime"
+            />
+    </set>
+</set>

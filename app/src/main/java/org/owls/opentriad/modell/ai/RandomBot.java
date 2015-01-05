@@ -1,9 +1,9 @@
-package org.owls.opentriad.ai;
+package org.owls.opentriad.modell.ai;
 
 import org.owls.opentriad.OpenTriad;
 import org.owls.opentriad.modell.Competitor;
 import org.owls.opentriad.modell.Deck;
-import org.owls.opentriad.view.DeckView;
+import org.owls.opentriad.ui.customviews.DeckView;
 
 import java.util.Random;
 
@@ -12,14 +12,14 @@ import java.util.Random;
  * @version 0.1a
  *
  * The Bot-class is a regular Competitor with additional functionality added to simulate
- * the turns of a "real human". This _really_ simple implementation relies on Random cards which are
+ * the turns of a "real player". This _really_ simple implementation relies on Random cards which are
  * set on a random position on the BattleField.
  */
-public class Bot extends Competitor {
+public class RandomBot extends Competitor {
 
     private Random random;
 
-    public Bot(String name, Deck deck) {
+    public RandomBot(String name, Deck deck) {
         super(name, deck);
 
         this.isBot = true;

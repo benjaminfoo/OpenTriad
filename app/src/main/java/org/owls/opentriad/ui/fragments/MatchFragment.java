@@ -1,4 +1,4 @@
-package org.owls.opentriad.activities.fragments;
+package org.owls.opentriad.ui.fragments;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -10,19 +10,20 @@ import android.view.ViewGroup;
 
 import org.owls.opentriad.R;
 import org.owls.opentriad.controller.GameController;
+import org.owls.opentriad.ui.fragments.delegates.OnFragmentInteractionListener;
 
 /**
  * @author Benjamin Wulfert (wulfert.benjamin@googlemail.com)
  * @version 0.1a
  *
- * The MainScreenFragment contains the main game elements:
+ * The MatchFragment contains the main game elements:
  *  - A GameController which handles user-interaction and the game-rules
  *  - The BattleField and the BattleFieldView which displays the cards in battle
  *  - The DeckViews which displays the opponents "hand" (or background if opponent)
  *  - The TextViews for displaying the opponents score
  *  - A TextView for displaying game log messages
  */
-public class MainScreenFragment extends Fragment {
+public class MatchFragment extends Fragment {
 
     public GameController gameController;
 
@@ -32,13 +33,13 @@ public class MainScreenFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment MainScreenFragment.
+     * @return A new instance of fragment MatchFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MainScreenFragment newInstance() {
-        return new MainScreenFragment();
+    public static MatchFragment newInstance() {
+        return new MatchFragment();
     }
-    public MainScreenFragment() {
+    public MatchFragment() {
         // Required empty public constructor
     }
 
@@ -75,19 +76,6 @@ public class MainScreenFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
-    }
+
 
 }

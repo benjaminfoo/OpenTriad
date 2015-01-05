@@ -1,4 +1,4 @@
-package org.owls.opentriad.view;
+package org.owls.opentriad.ui.customviews;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -10,7 +10,7 @@ import org.owls.opentriad.R;
 import org.owls.opentriad.OpenTriad;
 import org.owls.opentriad.modell.Card;
 import org.owls.opentriad.modell.Competitor;
-import org.owls.opentriad.view.delegates.DeckViewDelegates;
+import org.owls.opentriad.ui.customviews.delegates.DeckViewDelegates;
 
 import java.util.ArrayList;
 import java.util.List;
