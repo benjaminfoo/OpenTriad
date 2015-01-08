@@ -47,7 +47,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:paddingBottom="32dp"
-        android:id="@+id/relativeLayout">
+        android:id="@+id/deckmanagement_fragment_placeholder">
 
         <org.owls.opentriad.ui.customviews.DeckView
             android:id="@+id/player_deck"

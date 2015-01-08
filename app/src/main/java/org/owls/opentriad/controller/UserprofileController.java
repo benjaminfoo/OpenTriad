@@ -12,7 +12,7 @@ import java.util.prefs.PreferencesFactory;
  * @author Benjamin Wulfert (wulfert.benjamin@googlemail.com)
  * @version 0.2a
  *
- * The UserprofileController handles statistical- as well as player-identifying elements.
+ * The UserProfileController handles statistical- as well as player-identifying elements.
  *
  */
 public class UserProfileController {

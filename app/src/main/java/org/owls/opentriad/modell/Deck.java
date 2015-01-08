@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @author Benjamin Wulfert (wulfert.benjamin@googlemail.com)
- * @version 0.1a
+ * @version 0.2a
  *
  * A Deck is a set of Cards which enables a Competitor to choose from during his turn.
  * If a Deck is out of Cards, the game is over and a winner is determined, based on the Highscore
@@ -16,6 +16,8 @@ import java.util.List;
  *
  */
 public class Deck {
+
+    public String name = "Starter";
 
     public List<Card> cards;
 

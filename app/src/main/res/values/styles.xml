@@ -29,7 +29,7 @@
         <item name="android:background">@drawable/textbox</item>
         <item name="android:layout_below">@+id/cardboardView</item>
         <item name="android:layout_alignParentBottom">true</item>
-        <item name="android:layout_toLeftOf">@+id/relativeLayout</item>
+        <item name="android:layout_toLeftOf">@+id/deckmanagement_fragment_placeholder</item>
         <item name="android:layout_toRightOf">@+id/relativeLayout2</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
@@ -53,6 +53,15 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
+    </style>
+
+    <style name="style_decklist_button">
+        <item name="android:layout_margin">1dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/textbox</item>
+        <item name="android:textColor">@android:color/primary_text_dark</item>
     </style>
 
 </resources>

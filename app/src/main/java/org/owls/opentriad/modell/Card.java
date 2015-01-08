@@ -36,13 +36,15 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
-                "name='" + name +
-                '}';
+        return name + " (" + getPowerSum() + ")";
     }
 
     public String getPowers() {
         return powers[0] + ", " + powers[1] + ", " + powers[2] + ", " + powers[3];
+    }
+
+    public int getPowerSum(){
+        return powers[0] + powers[1] + powers[2] + powers[3];
     }
 
     public int getPowerByDirection(Direction direction){

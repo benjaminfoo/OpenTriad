@@ -10,10 +10,10 @@
         android:id="@+id/main_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:background="@drawable/textbox"
-        android:padding="15dp"
         android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:padding="15dp">
 
         <Button
             android:id="@+id/main_menu_new_game"
@@ -26,15 +26,24 @@
             android:text="@string/main_menu_profile" />
 
         <Button
+            android:id="@+id/main_menu_manage_decks"
+            style="@style/style_menu_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_menu_manage_decks" />
+
+        <Button
             android:id="@+id/main_menu_options"
             style="@style/style_menu_button"
             android:enabled="false"
-            android:text="@string/main_menu_options" />
+            android:text="@string/main_menu_options"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/main_menu_leave_game"
             style="@style/style_menu_button"
             android:text="@string/main_menu_leave_game" />
+
     </LinearLayout>
 
     <RelativeLayout
@@ -42,12 +51,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/main_menu"
-        android:gravity="center"
-        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp">
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/main_menu"
+        android:gravity="center">
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/deckmanagement_fragment_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/main_menu"
+        android:gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp" />
 
 </RelativeLayout>

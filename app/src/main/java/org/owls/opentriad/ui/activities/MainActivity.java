@@ -1,17 +1,15 @@
 package org.owls.opentriad.ui.activities;
 
-import android.animation.AnimatorInflater;
-import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 
 import org.owls.opentriad.R;
+import org.owls.opentriad.ui.fragments.CardManagementFragment;
 import org.owls.opentriad.ui.fragments.MatchFragment;
 import org.owls.opentriad.ui.fragments.UserProfileFragment;
 import org.owls.opentriad.ui.fragments.delegates.OnFragmentInteractionListener;
@@ -30,14 +28,16 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainscreen);
 
-        Button newGame   = (Button) findViewById(R.id.main_menu_new_game);
-        Button options   = (Button) findViewById(R.id.main_menu_options);
-        Button profile   = (Button) findViewById(R.id.main_menu_profile);
-        Button leaveGame = (Button) findViewById(R.id.main_menu_leave_game);
+        Button newGame     = (Button) findViewById(R.id.main_menu_new_game);
+        Button options     = (Button) findViewById(R.id.main_menu_options);
+        Button profile     = (Button) findViewById(R.id.main_menu_profile);
+        Button manageDecks = (Button) findViewById(R.id.main_menu_manage_decks);
+        Button leaveGame   = (Button) findViewById(R.id.main_menu_leave_game);
 
         newGame.setOnClickListener(this);
         options.setOnClickListener(this);
         profile.setOnClickListener(this);
+        manageDecks.setOnClickListener(this);
         leaveGame.setOnClickListener(this);
     }
 
@@ -70,6 +70,24 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
                             .beginTransaction()
                                 .replace(R.id.profile_fragment_placeholder, frag, UserProfileFragment.class.getSimpleName())
                                 .addToBackStack(null)
+                            .commit();
+                } else {
+                    getFragmentManager().popBackStack();
+                }
+
+                break;
+            case R.id.main_menu_manage_decks:
+
+                frag = (CardManagementFragment) getFragmentManager().findFragmentByTag(CardManagementFragment.class.getSimpleName());
+                if (frag == null) {
+                    frag = CardManagementFragment.newInstance();
+                }
+
+                if(!frag.isAdded()){
+                    getFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.deckmanagement_fragment_placeholder, frag, CardManagementFragment.class.getSimpleName())
+                            .addToBackStack(null)
                             .commit();
                 } else {
                     getFragmentManager().popBackStack();
