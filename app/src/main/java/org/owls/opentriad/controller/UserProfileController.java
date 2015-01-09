@@ -17,7 +17,7 @@ import java.util.prefs.PreferencesFactory;
  */
 public class UserProfileController {
 
-    private SharedPreferences preferences;
+    private SharedPreferences preferences; //
 
     private static final String userprofile_draws = "USERPROFILE_DRAWS";
     private static final String userprofile_looses = "USERPROFILE_LOOSES";
