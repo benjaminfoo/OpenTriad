@@ -1,19 +1,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MatchActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ui_match_background"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:longClickable="true"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MatchActivity">
 
     <RelativeLayout
+        android:id="@+id/relativeLayout2"
         android:layout_width="70dp"
         android:layout_height="match_parent"
-        android:paddingBottom="32dp"
-        android:id="@+id/relativeLayout2">
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp">
 
         <org.owls.opentriad.ui.customviews.DeckView
             android:id="@+id/opponent_deck"
@@ -32,22 +32,23 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
+            android:background="@color/background"
+            android:clickable="false"
             android:gravity="center"
             android:text="0"
+            android:textColor="@android:color/white"
             android:textSize="30sp"
-            android:background="@color/background"
-            android:textStyle="italic"
-            android:clickable="false"
-            android:textColor="@android:color/white" />
+            android:textStyle="italic" />
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/deckmanagement_fragment_placeholder"
         android:layout_width="70dp"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
-        android:paddingBottom="32dp"
-        android:id="@+id/deckmanagement_fragment_placeholder">
+        android:paddingBottom="16dp"
+        android:paddingRight="16dp">
 
         <org.owls.opentriad.ui.customviews.DeckView
             android:id="@+id/player_deck"
@@ -67,29 +68,29 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:background="@color/background"
+            android:clickable="false"
             android:gravity="center"
             android:text="0"
+            android:textColor="@android:color/white"
             android:textSize="30sp"
-            android:background="@color/background"
-            android:textStyle="italic"
-            android:clickable="false"
-            android:textColor="@android:color/white" />
+            android:textStyle="italic" />
 
     </RelativeLayout>
 
     <org.owls.opentriad.ui.customviews.BattleFieldView
+        android:id="@+id/cardboardView"
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="280dp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:id="@+id/cardboardView">
+        android:layout_centerVertical="true">
 
     </org.owls.opentriad.ui.customviews.BattleFieldView>
 
     <TextView
         android:id="@+id/gameLog"
-        android:text="Hello World!"
-        style="@style/view_final_fantasy_textbox" />
+        style="@style/view_final_fantasy_textbox"
+        android:text="Hello World!" />
 
 
 </RelativeLayout>

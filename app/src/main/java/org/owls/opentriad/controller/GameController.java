@@ -4,14 +4,14 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-import org.owls.opentriad.R;
 import org.owls.opentriad.OpenTriad;
-import org.owls.opentriad.modell.UserProfile;
-import org.owls.opentriad.modell.ai.RandomBot;
+import org.owls.opentriad.R;
 import org.owls.opentriad.modell.Card;
 import org.owls.opentriad.modell.Competitor;
-import org.owls.opentriad.ui.customviews.CardView;
+import org.owls.opentriad.modell.UserProfile;
+import org.owls.opentriad.modell.ai.RandomBot;
 import org.owls.opentriad.ui.customviews.BattleFieldView;
+import org.owls.opentriad.ui.customviews.CardView;
 import org.owls.opentriad.ui.customviews.DeckView;
 import org.owls.opentriad.ui.customviews.delegates.BattleFieldViewDelegates;
 import org.owls.opentriad.ui.customviews.delegates.DeckViewDelegates;
@@ -95,7 +95,7 @@ public class GameController implements DeckViewDelegates, BattleFieldViewDelegat
 
     @Override
     public void activeCardSet(Card card) {
-        gameLog.setText(card.name + " (" + card.getPowers() + ")");
+        gameLog.setText("Choosen card: " + card.name);
     }
 
     @Override
@@ -153,7 +153,7 @@ public class GameController implements DeckViewDelegates, BattleFieldViewDelegat
             if(draw){
                 gameLog.setText(context.getString(R.string.ingame_game_result_draw));
             } else {
-                gameLog.setText((playerWon ? player.name : opponent.name) + context.getString(R.string.ingame_game_result_competitor_wins_the_game));
+                gameLog.setText((playerWon ? player.name : opponent.name) + " " + context.getString(R.string.ingame_game_result_competitor_wins_the_game));
             }
 
             UserProfileController userProfileController = new UserProfileController(activityView.getContext());

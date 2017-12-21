@@ -1,17 +1,20 @@
 package org.owls.opentriad.ui.customviews;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import org.owls.opentriad.R;
 import org.owls.opentriad.OpenTriad;
+import org.owls.opentriad.R;
 import org.owls.opentriad.modell.Card;
 import org.owls.opentriad.modell.Competitor;
 import org.owls.opentriad.ui.customviews.delegates.DeckViewDelegates;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,9 +67,16 @@ public class DeckView extends LinearLayout implements View.OnClickListener {
 
         if (foreignDeck) {
             for (int i = 0; i < cardViews.size(); i++) {
-                int cardResourceIdentifier = getResources().getIdentifier(competitor.deck.get(i).name, "drawable", getContext().getPackageName());
-                Drawable drawable = getResources().getDrawable(cardResourceIdentifier);
-                cardViews.get(i).setImageDrawable(drawable);
+                String cardToLoad = competitor.deck.get(i).name;
+                try {
+                    InputStream is = getContext().getAssets().open("cards/r" + cardToLoad.toLowerCase() + ".jpg");
+                    Bitmap bitmap = BitmapFactory.decodeStream(is);
+                    cardViews.get(i).setImageBitmap(bitmap);
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
                 updateIndexPerCardAsTag();
                 cardViews.get(i).setOnClickListener(this);
             }

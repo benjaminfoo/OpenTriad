@@ -1,11 +1,15 @@
 package org.owls.opentriad.ui.customviews;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
 import org.owls.opentriad.modell.Card;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * @author Benjamin Wulfert (wulfert.benjamin@googlemail.com)
@@ -36,9 +40,15 @@ public class CardView extends ImageView {
     public void setCard(Card card) {
         this.card = card;
 
-        int cardResourceIdentifier = getResources().getIdentifier(card.name, "drawable", getContext().getPackageName());
-        Drawable drawable = getResources().getDrawable(cardResourceIdentifier);
-        setImageDrawable(drawable);
+        try {
+            InputStream is = getContext().getAssets().open("cards/" + card.name.toLowerCase() + ".jpg");
+            Bitmap bitmap = BitmapFactory.decodeStream(is);
+            setImageBitmap(bitmap);
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         invalidate();
     }
 
