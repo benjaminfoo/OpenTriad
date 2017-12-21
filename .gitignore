@@ -32,3 +32,11 @@ proguard/
 # OSX related
 .DS_Store
 .idea/
+/gradle.properties
+/local.properties
+/OpenTriad.iml
+/.idea/
+/.gradle/
+/app/app.iml
+/build/
+/gradle/
