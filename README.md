@@ -16,6 +16,13 @@ Contributors, pull requests or mere ideas are welcome - happy hacking!
  - Basic TripleTriad reimplementation
  - Userprofile-System
  - Score-System
+ 
+# How to build & deploy
+ * Clone this repository: git clone https://github.com/benjaminfoo/OpenTriad.git
+ * Open Android Studio, Select "Open Project" and within the FileDialog, choose the build.gradle file at the project-root.
+   * Let gradle / android studio install missing packages / API levels
+ * Install project on emulator or mobile device
+ * Thats it!
 
 ## TODO
 - Implement deck management (we don't need real decks, just selecting 5 'active' cards should be enough)
