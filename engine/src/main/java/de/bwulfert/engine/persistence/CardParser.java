@@ -1,6 +1,6 @@
 package de.bwulfert.engine.persistence;
 
-import de.bwulfert.engine.modell.Card;
+import de.bwulfert.engine.model.Card;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package de.bwulfert.engine.persistence;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import de.bwulfert.engine.modell.Card;
+import de.bwulfert.engine.model.Card;
 
 import java.io.File;
 import java.io.FileInputStream;

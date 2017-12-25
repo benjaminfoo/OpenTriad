@@ -1,7 +1,7 @@
 package de.bwulfert.opentriad.terminalapp.view;
 
-import de.bwulfert.engine.modell.Battlefield;
-import de.bwulfert.engine.modell.Card;
+import de.bwulfert.engine.model.Battlefield;
+import de.bwulfert.engine.model.Card;
 
 import java.util.HashMap;
 import java.util.Map;

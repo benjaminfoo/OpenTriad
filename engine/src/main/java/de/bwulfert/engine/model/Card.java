@@ -1,4 +1,4 @@
-package de.bwulfert.engine.modell;
+package de.bwulfert.engine.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

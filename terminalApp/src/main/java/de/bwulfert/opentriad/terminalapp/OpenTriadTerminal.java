@@ -2,8 +2,7 @@ package de.bwulfert.opentriad.terminalapp;
 
 import de.bwulfert.engine.OpenTriad;
 import de.bwulfert.engine.controller.*;
-import de.bwulfert.engine.modell.Card;
-import de.bwulfert.engine.modell.Player;
+import de.bwulfert.engine.model.Player;
 import de.bwulfert.opentriad.terminalapp.view.BattlefieldView;
 
 import java.util.Arrays;
@@ -18,15 +17,35 @@ public class OpenTriadTerminal implements BattlefieldDelegate {
         OpenTriad openTriad = new OpenTriad();
         openTriad.loadCards();
         BattlefieldController battlefieldController = new BattlefieldController(this);
+
+        MoveDelegate playerMoveDelegate = new DefaultMoveDelegate();
+        playerMoveDelegate.setActiveDeck(new PreselectedCardChooser().chooseCards(openTriad.getCards()));
+
+        MoveDelegate cpuMoveDelegate = new DefaultMoveDelegate();
+        cpuMoveDelegate.setActiveDeck(new PreselectedCardChooser().chooseCards(openTriad.getCards()));
         battlefieldController.initialize(
-                new PlayerController(new Player("Test Player 1", new TerminalCardChooser().chooseCards(openTriad.getCards()))),
-                new PlayerController(new Player("Test Player 2", new PreselectedCardChooser().chooseCards(openTriad.getCards())))
+                new PlayerController(
+                        new Player("Test Player 1"),
+                        playerMoveDelegate
+                ),
+                new PlayerController(
+                        new Player("Test Player 2"),
+                        cpuMoveDelegate
+                )
         );
 
         battlefieldView = new BattlefieldView(battlefieldController.getBattlefield());
 
         while (!battlefieldController.getBattlefield().areAllSlotsSet()) {
             battlefieldController.nextTurn();
+            // TODO: REMOVE ME, JUST FOR TESTING PURPOSES
+            if (DefaultMoveDelegate.x == 2) {
+                DefaultMoveDelegate.x = 0;
+                DefaultMoveDelegate.y++;
+            } else {
+                DefaultMoveDelegate.x++;
+            }
+            // TODO: REMOVE ME, JUST FOR TESTING PURPOSES
         }
     }
 
@@ -38,13 +57,13 @@ public class OpenTriadTerminal implements BattlefieldDelegate {
 
     @Override
     public void onTurnFinished(BattlefieldController battlefieldController, PlayerController currentPlayer, PlayerController nextPlayer, int turnCount) {
-        System.out.println();
-        Card[][] battleField = battlefieldController.getBattlefield().getBattleField();
+        System.out.println("\n\n");
         battlefieldView.render();
-        System.out.println("Player 1 - " + currentPlayer.getPlayer().getName() + " - Score: " + currentPlayer.getScore());
-        System.out.println("Cards: " + Arrays.asList(currentPlayer.getPlayer().getDeck().getCards()));
-        System.out.println("Player 2 - " + nextPlayer.getPlayer().getName() + " - Score: " + nextPlayer.getScore());
-        System.out.println("Cards: " + Arrays.asList(nextPlayer.getPlayer().getDeck().getCards()));
+        System.out.println(currentPlayer.getPlayer().getName() + " - Score: " + currentPlayer.getScore());
+        System.out.println("\tDeck: " + Arrays.asList(currentPlayer.getMoveDelegate().getActiveDeck()));
+        System.out.println(nextPlayer.getPlayer().getName() + " - Score: " + nextPlayer.getScore());
+        System.out.println("\tDeck: " + Arrays.asList(nextPlayer.getMoveDelegate().getActiveDeck()));
+        System.out.println("\n\n");
     }
 
     @Override

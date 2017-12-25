@@ -1,6 +1,6 @@
 package de.bwulfert.engine.tests;
 
-import de.bwulfert.engine.modell.Card;
+import de.bwulfert.engine.model.Card;
 import de.bwulfert.engine.persistence.LocalCardParser;
 import org.junit.Test;
 

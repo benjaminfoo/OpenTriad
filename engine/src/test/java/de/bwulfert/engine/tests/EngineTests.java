@@ -4,7 +4,7 @@ import de.bwulfert.engine.OpenTriad;
 import de.bwulfert.engine.controller.BattlefieldController;
 import de.bwulfert.engine.controller.PlayerController;
 import de.bwulfert.engine.controller.PreselectedCardChooser;
-import de.bwulfert.engine.modell.Player;
+import de.bwulfert.engine.model.Player;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

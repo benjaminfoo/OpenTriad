@@ -1,7 +1,7 @@
 package de.bwulfert.engine.controller;
 
-import de.bwulfert.engine.modell.Card;
-import de.bwulfert.engine.modell.Deck;
+import de.bwulfert.engine.model.Card;
+import de.bwulfert.engine.model.Deck;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,7 @@
 package de.bwulfert.engine.controller;
 
-import de.bwulfert.engine.modell.Battlefield;
+import de.bwulfert.engine.model.Battlefield;
+import de.bwulfert.engine.model.Card;
 
 public class BattlefieldController {
 
@@ -23,18 +24,22 @@ public class BattlefieldController {
         this.battlefieldDelegate = battlefieldDelegate;
     }
 
-    // TODO: REMOVE ME - JUST FOR TESTING, UNTIL REAL CARD-CHOOSING HAS BEEN IMPLEMENTED
-    int x = 0;
-    int y = 0;
-
     public void nextTurn() {
         // game loop
         if (!battlefield.areAllSlotsSet()) {
-            // let the player make his turnCount
-            currentPlayer.selectCard();
 
             // let the player set the selected card to a position
-            battlefield.setCardAtPosition(currentPlayer.getPlayer(), currentPlayer.getSelectedCard(), x, y);
+            MoveDelegate moveDelegate = currentPlayer.getMoveDelegate();
+            Card card = moveDelegate.getCard();
+            int xPosition = moveDelegate.getX();
+            int yPosition = moveDelegate.getY();
+
+            battlefield.setCardAtPosition(
+                    currentPlayer.getPlayer(),
+                    card,
+                    xPosition,
+                    yPosition
+            );
 
             // after every turnCount, switch the current player
             currentPlayer = currentPlayer == firstPlayer ? secondPlayer : firstPlayer;
@@ -42,20 +47,15 @@ public class BattlefieldController {
 
             // let the player set the selected card to a position, because we're simply counting these values,
             // we've to make sure that the counting happens at the end of the turnCount ...
-            // JUST FOR TESTING!
-            if (x == 2) {
-                x = 0;
-                y++;
-            } else {
-                x++;
-            }
-
+            boolean areAllSlotsSet = true;
             for (int y = 0; y < this.battlefield.getBattleField().length; y++) {
                 for (int x = 0; x < this.battlefield.getBattleField()[y].length; x++) {
-                    this.battlefield.setAllSlotsSet(this.battlefield.getBattleField()[y][x] != null);
+                    areAllSlotsSet &= this.battlefield.getBattleField()[y][x] != null;
                 }
             }
+            this.battlefield.setAllSlotsSet(areAllSlotsSet);
 
+            // inform everyone that the game is finished
             if (battlefield.areAllSlotsSet()) {
                 battlefieldDelegate.onGameFinished(this, currentPlayer);
             }

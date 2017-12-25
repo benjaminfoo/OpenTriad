@@ -1,27 +1,17 @@
 package de.bwulfert.engine.controller;
 
-import de.bwulfert.engine.modell.Card;
-import de.bwulfert.engine.modell.Player;
+import de.bwulfert.engine.model.Player;
 
 public class PlayerController {
 
     private Player player;
-    private Card selectedCard;
     private int score;
+    private MoveDelegate moveDelegate;
 
-    public PlayerController(Player player) {
+    public PlayerController(Player player, MoveDelegate moveDelegate) {
         this.player = player;
-
         this.score = 5;
-    }
-
-    public void selectCard() {
-        this.selectedCard = player.getDeck().getCards().get(0);
-        this.player.getDeck().getCards().remove(0);
-    }
-
-    public Card getSelectedCard() {
-        return selectedCard;
+        this.moveDelegate = moveDelegate;
     }
 
     public Player getPlayer() {
@@ -32,4 +22,7 @@ public class PlayerController {
         return score;
     }
 
+    public MoveDelegate getMoveDelegate() {
+        return moveDelegate;
+    }
 }

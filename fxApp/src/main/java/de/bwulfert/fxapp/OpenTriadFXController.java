@@ -1,12 +1,9 @@
 package de.bwulfert.fxapp;
 
 import de.bwulfert.engine.OpenTriad;
-import de.bwulfert.engine.controller.BattlefieldController;
-import de.bwulfert.engine.controller.BattlefieldDelegate;
-import de.bwulfert.engine.controller.PlayerController;
-import de.bwulfert.engine.controller.PreselectedCardChooser;
-import de.bwulfert.engine.modell.Card;
-import de.bwulfert.engine.modell.Player;
+import de.bwulfert.engine.controller.*;
+import de.bwulfert.engine.model.Card;
+import de.bwulfert.engine.model.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -53,9 +50,20 @@ public class OpenTriadFXController implements Initializable, BattlefieldDelegate
 
         BattlefieldController battlefieldController = new BattlefieldController(this);
         startGame.setOnAction(onClick -> {
+            MoveDelegate playerMoveDelegate = new DefaultMoveDelegate();
+            playerMoveDelegate.setActiveDeck(new PreselectedCardChooser().chooseCards(openTriad.getCards()));
+
+            MoveDelegate cpuMoveDelegate = new DefaultMoveDelegate();
+            cpuMoveDelegate.setActiveDeck(new PreselectedCardChooser().chooseCards(openTriad.getCards()));
             battlefieldController.initialize(
-                    new PlayerController(new Player("Test Player 1", new PreselectedCardChooser().chooseCards(openTriad.getCards()))),
-                    new PlayerController(new Player("Test Player 2", new PreselectedCardChooser().chooseCards(openTriad.getCards())))
+                    new PlayerController(
+                            new Player("Test Player 1"),
+                            playerMoveDelegate
+                    ),
+                    new PlayerController(
+                            new Player("Test Player 2"),
+                            cpuMoveDelegate
+                    )
             );
             battlefieldController.nextTurn();
         });
@@ -76,11 +84,11 @@ public class OpenTriadFXController implements Initializable, BattlefieldDelegate
         player1Score.setText(firstPlayer.getPlayer().getName() + "\n" + firstPlayer.getScore());
         player2Score.setText(secondPlayer.getPlayer().getName() + "\n" + secondPlayer.getScore());
 
-        for (Card card : firstPlayer.getPlayer().getDeck().getCards()) {
+        for (Card card : firstPlayer.getMoveDelegate().getActiveDeck().getCards()) {
             player1CardList.getChildren().add(new Label(card.toString()));
         }
 
-        for (Card card : secondPlayer.getPlayer().getDeck().getCards()) {
+        for (Card card : secondPlayer.getMoveDelegate().getActiveDeck().getCards()) {
             player2CardList.getChildren().add(new Label(card.toString()));
         }
 
@@ -94,12 +102,12 @@ public class OpenTriadFXController implements Initializable, BattlefieldDelegate
         player2Score.setText(secondPlayer.getPlayer().getName() + "\n" + secondPlayer.getScore());
 
         player1CardList.getChildren().clear();
-        for (Card card : firstPlayer.getPlayer().getDeck().getCards()) {
+        for (Card card : firstPlayer.getMoveDelegate().getActiveDeck().getCards()) {
             player1CardList.getChildren().add(new Label(card.toString()));
         }
 
         player2CardList.getChildren().clear();
-        for (Card card : secondPlayer.getPlayer().getDeck().getCards()) {
+        for (Card card : secondPlayer.getMoveDelegate().getActiveDeck().getCards()) {
             player2CardList.getChildren().add(new Label(card.toString()));
         }
 

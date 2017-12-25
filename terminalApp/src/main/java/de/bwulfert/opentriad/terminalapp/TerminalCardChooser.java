@@ -1,7 +1,8 @@
-package de.bwulfert.engine.controller;
+package de.bwulfert.opentriad.terminalapp;
 
-import de.bwulfert.engine.modell.Card;
-import de.bwulfert.engine.modell.Deck;
+import de.bwulfert.engine.controller.CardChooser;
+import de.bwulfert.engine.model.Card;
+import de.bwulfert.engine.model.Deck;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class TerminalCardChooser implements CardChooser {
     }
 
     private void printAvailableCards() {
-        System.out.println("\nChoose five of the available cards:");
+        System.out.println("\nChoose five cards:");
         for (int i = 0; i < availableCards.size(); i++) {
             Card card = availableCards.get(i);
             System.out.println(i + ": " + card.toString());

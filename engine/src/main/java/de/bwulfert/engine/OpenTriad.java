@@ -1,8 +1,10 @@
 package de.bwulfert.engine;
 
-import de.bwulfert.engine.modell.Card;
+import de.bwulfert.engine.model.Card;
+import de.bwulfert.engine.model.Deck;
 import de.bwulfert.engine.persistence.LocalCardParser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +28,16 @@ public class OpenTriad {
     public List<Card> getCards() {
         return cards;
     }
+
+    // TODO: JEST FOR TESTING
+    public Deck getDefaultDeck() {
+        return new Deck("Default-Deck-1", new ArrayList<Card>(cards.subList(0, 4)));
+    }
+
+    public Deck getDefaultDeck2() {
+        return new Deck("Default-Deck-2", new ArrayList<Card>(cards.subList(0, 4)));
+    }
+    // TODO: JEST FOR TESTING
 
     public void setCards(List<Card> cards) {
         this.cards = cards;

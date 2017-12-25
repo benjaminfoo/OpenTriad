@@ -1,4 +1,4 @@
-package de.bwulfert.engine.modell;
+package de.bwulfert.engine.model;
 
 public class Battlefield {
 
