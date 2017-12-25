@@ -4,9 +4,9 @@ import de.bwulfert.engine.OpenTriad;
 import de.bwulfert.engine.api.BattlefieldDelegate;
 import de.bwulfert.engine.api.MoveDelegate;
 import de.bwulfert.engine.api.impl.BattlefieldController;
-import de.bwulfert.engine.api.impl.DefaultMoveDelegate;
 import de.bwulfert.engine.api.impl.PlayerController;
 import de.bwulfert.engine.api.impl.PreselectedCardChooser;
+import de.bwulfert.engine.api.impl.RandomMoveDelegate;
 import de.bwulfert.engine.model.Card;
 import de.bwulfert.engine.model.Player;
 import javafx.fxml.FXML;
@@ -55,10 +55,10 @@ public class OpenTriadFXController implements Initializable, BattlefieldDelegate
 
         BattlefieldController battlefieldController = new BattlefieldController(this);
         startGame.setOnAction(onClick -> {
-            MoveDelegate playerMoveDelegate = new DefaultMoveDelegate();
+            MoveDelegate playerMoveDelegate = new RandomMoveDelegate();
             playerMoveDelegate.setActiveDeck(new PreselectedCardChooser().chooseCards(openTriad.getCards()));
 
-            MoveDelegate cpuMoveDelegate = new DefaultMoveDelegate();
+            MoveDelegate cpuMoveDelegate = new RandomMoveDelegate();
             cpuMoveDelegate.setActiveDeck(new PreselectedCardChooser().chooseCards(openTriad.getCards()));
             battlefieldController.initialize(
                     new PlayerController(
@@ -130,6 +130,11 @@ public class OpenTriadFXController implements Initializable, BattlefieldDelegate
         }
 
         roundCount.setText("Round: " + turnCount);
+    }
+
+    @Override
+    public void slotAlreadySet(int xPosition, int yPosition) {
+
     }
 
     @Override

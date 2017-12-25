@@ -15,6 +15,11 @@ public class DefaultBattlefieldDelegate implements BattlefieldDelegate {
     }
 
     @Override
+    public void slotAlreadySet(int xPosition, int yPosition) {
+
+    }
+
+    @Override
     public void onGameFinished(BattlefieldController battlefieldController, PlayerController winner) {
 
     }

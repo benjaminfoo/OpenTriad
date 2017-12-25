@@ -36,6 +36,12 @@ public class BattlefieldController {
             int xPosition = moveDelegate.getX();
             int yPosition = moveDelegate.getY();
 
+            while (!battlefield.isSlotAvailable(xPosition, yPosition)) {
+                battlefieldDelegate.slotAlreadySet(xPosition, yPosition);
+                xPosition = moveDelegate.getX();
+                yPosition = moveDelegate.getY();
+            }
+
             battlefield.setCardAtPosition(
                     currentPlayer.getPlayer(),
                     card,

@@ -9,6 +9,8 @@ public interface BattlefieldDelegate {
 
     void onTurnFinished(BattlefieldController battlefieldController, PlayerController currentPlayer, PlayerController nextPlayer, int turnCount);
 
+    void slotAlreadySet(int xPosition, int yPosition);
+
     void onGameFinished(BattlefieldController battlefieldController, PlayerController winner);
 
 }

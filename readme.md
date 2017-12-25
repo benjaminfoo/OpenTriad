@@ -39,7 +39,7 @@ Interfaces / Implementations:
   * DefaultBattlefieldDelegate - Dummy implementation (for testing purposes) - doesnt actually do anything
   * The other subprojects make use of this.
 * MoveDelegate - Callbacks for (engine-events) in order to provide a runtime-independent player-turn. This is needed for telling the engine which card a player sets on the battlefield.
-  * DefaultMoveDelegate - Default implementation - mimics turns of a player and provides information about what card has been set on the battlefield.
+  * RandomMoveDelegate - Mimics the turn of a player by randomly setting cards on the battlefield.
   * TerminalMoveDelegate - Allows a user to input card-, x- and y- information in order to set a card.
     
 

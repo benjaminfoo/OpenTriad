@@ -4,9 +4,9 @@ import de.bwulfert.engine.OpenTriad;
 import de.bwulfert.engine.api.BattlefieldDelegate;
 import de.bwulfert.engine.api.MoveDelegate;
 import de.bwulfert.engine.api.impl.BattlefieldController;
-import de.bwulfert.engine.api.impl.DefaultMoveDelegate;
 import de.bwulfert.engine.api.impl.PlayerController;
 import de.bwulfert.engine.api.impl.PreselectedCardChooser;
+import de.bwulfert.engine.api.impl.RandomMoveDelegate;
 import de.bwulfert.engine.model.Player;
 import de.bwulfert.opentriad.terminalapp.view.BattlefieldView;
 
@@ -23,10 +23,10 @@ public class OpenTriadTerminal implements BattlefieldDelegate {
         openTriad.loadCards();
         BattlefieldController battlefieldController = new BattlefieldController(this);
 
-        MoveDelegate playerMoveDelegate = new DefaultMoveDelegate();
+        MoveDelegate playerMoveDelegate = new RandomMoveDelegate();
         playerMoveDelegate.setActiveDeck(new PreselectedCardChooser().chooseCards(openTriad.getCards()));
 
-        MoveDelegate cpuMoveDelegate = new DefaultMoveDelegate();
+        MoveDelegate cpuMoveDelegate = new RandomMoveDelegate();
         cpuMoveDelegate.setActiveDeck(new PreselectedCardChooser().chooseCards(openTriad.getCards()));
         battlefieldController.initialize(
                 new PlayerController(
@@ -43,14 +43,6 @@ public class OpenTriadTerminal implements BattlefieldDelegate {
 
         while (!battlefieldController.getBattlefield().areAllSlotsSet()) {
             battlefieldController.nextTurn();
-            // TODO: REMOVE ME, JUST FOR TESTING PURPOSES
-            if (DefaultMoveDelegate.x == 2) {
-                DefaultMoveDelegate.x = 0;
-                DefaultMoveDelegate.y++;
-            } else {
-                DefaultMoveDelegate.x++;
-            }
-            // TODO: REMOVE ME, JUST FOR TESTING PURPOSES
         }
     }
 
@@ -69,6 +61,11 @@ public class OpenTriadTerminal implements BattlefieldDelegate {
         System.out.println(nextPlayer.getPlayer().getName() + " - Score: " + nextPlayer.getScore());
         System.out.println("\tDeck: " + Arrays.asList(nextPlayer.getMoveDelegate().getActiveDeck()));
         System.out.println("\n\n");
+    }
+
+    @Override
+    public void slotAlreadySet(int xPosition, int yPosition) {
+        System.out.println("Slot at x: " + xPosition + " | y:" + yPosition + " already set, you've to use another one.");
     }
 
     @Override

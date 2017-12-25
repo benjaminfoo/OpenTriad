@@ -26,4 +26,7 @@ public class Battlefield {
         battleField[yPos][xPos] = card;
     }
 
+    public boolean isSlotAvailable(int xPosition, int yPosition) {
+        return battleField[yPosition][xPosition] == null;
+    }
 }

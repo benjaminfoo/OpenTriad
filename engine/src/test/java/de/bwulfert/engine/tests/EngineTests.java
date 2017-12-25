@@ -1,9 +1,11 @@
 package de.bwulfert.engine.tests;
 
 import de.bwulfert.engine.OpenTriad;
+import de.bwulfert.engine.api.MoveDelegate;
 import de.bwulfert.engine.api.impl.BattlefieldController;
 import de.bwulfert.engine.api.impl.PlayerController;
 import de.bwulfert.engine.api.impl.PreselectedCardChooser;
+import de.bwulfert.engine.api.impl.RandomMoveDelegate;
 import de.bwulfert.engine.model.Player;
 import org.junit.Test;
 
@@ -17,9 +19,20 @@ public class EngineTests {
         openTriad.loadCards();
 
         BattlefieldController battlefieldController = new BattlefieldController();
+        MoveDelegate playerMoveDelegate = new RandomMoveDelegate();
+        playerMoveDelegate.setActiveDeck(new PreselectedCardChooser().chooseCards(openTriad.getCards()));
+
+        MoveDelegate cpuMoveDelegate = new RandomMoveDelegate();
+        cpuMoveDelegate.setActiveDeck(new PreselectedCardChooser().chooseCards(openTriad.getCards()));
         battlefieldController.initialize(
-                new PlayerController(new Player("Test Player 1", new PreselectedCardChooser().chooseCards(openTriad.getCards()))),
-                new PlayerController(new Player("Test Player 2", new PreselectedCardChooser().chooseCards(openTriad.getCards())))
+                new PlayerController(
+                        new Player("Test Player 1"),
+                        playerMoveDelegate
+                ),
+                new PlayerController(
+                        new Player("Test Player 2"),
+                        cpuMoveDelegate
+                )
         );
 
         for (int i = 0; i < 9; i++) {

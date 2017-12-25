@@ -16,6 +16,10 @@ import java.util.List;
  */
 public class OpenTriad {
 
+
+    public static final int BATTLEFIELD_WIDTH = 3;
+    public static final int BATTLEFIELD_HEIGHT = 3;
+
     public static final String DEFAULT_ENCODING = "UTF-8";
 
     private List<Card> cards;
@@ -42,4 +46,5 @@ public class OpenTriad {
     public void setCards(List<Card> cards) {
         this.cards = cards;
     }
+
 }
