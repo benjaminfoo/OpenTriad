@@ -1,44 +1,44 @@
 [
   {
     "name": "Test",
-    "north": "1",
-    "west": "5",
-    "east": "4",
-    "south": "1"
+    "topPower": "1",
+    "leftPower": "5",
+    "rightPower": "4",
+    "bottomPower": "1"
   },
   {
     "name": "Test-2",
-    "north": "5",
-    "west": "3",
-    "east": "1",
-    "south": "1"
+    "topPower": "5",
+    "leftPower": "3",
+    "rightPower": "1",
+    "bottomPower": "1"
   },
   {
     "name": "Test-3",
-    "north": "5",
-    "west": "3",
-    "east": "1",
-    "south": "1"
+    "topPower": "5",
+    "leftPower": "3",
+    "rightPower": "1",
+    "bottomPower": "1"
   },
   {
     "name": "Test-4",
-    "north": "5",
-    "west": "3",
-    "east": "1",
-    "south": "1"
+    "topPower": "5",
+    "leftPower": "3",
+    "rightPower": "1",
+    "bottomPower": "1"
   },
   {
     "name": "Test-5",
-    "north": "5",
-    "west": "3",
-    "east": "1",
-    "south": "1"
+    "topPower": "5",
+    "leftPower": "3",
+    "rightPower": "1",
+    "bottomPower": "1"
   },
   {
     "name": "Test-6",
-    "north": "5",
-    "west": "3",
-    "east": "1",
-    "south": "1"
+    "topPower": "5",
+    "leftPower": "3",
+    "rightPower": "1",
+    "bottomPower": "1"
   }
 ]

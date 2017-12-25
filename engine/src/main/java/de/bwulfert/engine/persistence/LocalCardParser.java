@@ -43,7 +43,7 @@ public class LocalCardParser implements CardParser {
     }
 
     public List<Card> parseCards() {
-        return parseCards("/cards.json");
+        return parseCards("cards.json");
     }
 
 }

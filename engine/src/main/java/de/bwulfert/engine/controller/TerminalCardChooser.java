@@ -17,15 +17,16 @@ public class TerminalCardChooser implements CardChooser {
     }
 
     private void printAvailableCards() {
-        System.out.println("\nAvailable cards:");
+        System.out.println("\nChoose five of the available cards:");
         for (int i = 0; i < availableCards.size(); i++) {
             Card card = availableCards.get(i);
-            System.out.println(i + ": " + card.getName());
+            System.out.println(i + ": " + card.toString());
         }
     }
 
     @Override
     public Deck chooseCards(List<Card> availableCards) {
+        this.availableCards = availableCards;
         List<Card> cards = new ArrayList<>(5);
         while (cards.size() != 5) {
             printAvailableCards();

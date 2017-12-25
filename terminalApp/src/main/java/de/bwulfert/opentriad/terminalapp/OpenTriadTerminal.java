@@ -2,11 +2,19 @@ package de.bwulfert.opentriad.terminalapp;
 
 import de.bwulfert.engine.OpenTriad;
 import de.bwulfert.engine.controller.*;
+import de.bwulfert.engine.modell.Card;
 import de.bwulfert.engine.modell.Player;
+import de.bwulfert.opentriad.terminalapp.view.BattlefieldView;
+
+import java.util.Arrays;
 
 public class OpenTriadTerminal implements BattlefieldDelegate {
 
+    BattlefieldView battlefieldView;
+
     public OpenTriadTerminal() {
+        System.out.println("Welcome to OpenTriad Terminal-Edition!");
+
         OpenTriad openTriad = new OpenTriad();
         openTriad.loadCards();
         BattlefieldController battlefieldController = new BattlefieldController(this);
@@ -15,11 +23,11 @@ public class OpenTriadTerminal implements BattlefieldDelegate {
                 new PlayerController(new Player("Test Player 2", new PreselectedCardChooser().chooseCards(openTriad.getCards())))
         );
 
+        battlefieldView = new BattlefieldView(battlefieldController.getBattlefield());
+
         while (!battlefieldController.getBattlefield().areAllSlotsSet()) {
             battlefieldController.nextTurn();
         }
-
-
     }
 
     @Override
@@ -30,7 +38,13 @@ public class OpenTriadTerminal implements BattlefieldDelegate {
 
     @Override
     public void onTurnFinished(BattlefieldController battlefieldController, PlayerController currentPlayer, PlayerController nextPlayer, int turnCount) {
-
+        System.out.println();
+        Card[][] battleField = battlefieldController.getBattlefield().getBattleField();
+        battlefieldView.render();
+        System.out.println("Player 1 - " + currentPlayer.getPlayer().getName() + " - Score: " + currentPlayer.getScore());
+        System.out.println("Cards: " + Arrays.asList(currentPlayer.getPlayer().getDeck().getCards()));
+        System.out.println("Player 2 - " + nextPlayer.getPlayer().getName() + " - Score: " + nextPlayer.getScore());
+        System.out.println("Cards: " + Arrays.asList(nextPlayer.getPlayer().getDeck().getCards()));
     }
 
     @Override

@@ -19,7 +19,8 @@ public class OpenTriad {
     private List<Card> cards;
 
     public void loadCards() {
-        cards = new LocalCardParser().parseCards();
+        LocalCardParser localCardParser = new LocalCardParser();
+        cards = localCardParser.parseCards(getClass().getClassLoader().getResource("cards.json").getFile());
     }
 
     public List<Card> getCards() {
