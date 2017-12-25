@@ -1,4 +1,6 @@
-package de.bwulfert.engine.controller;
+package de.bwulfert.engine.api.impl;
+
+import de.bwulfert.engine.api.BattlefieldDelegate;
 
 public class DefaultBattlefieldDelegate implements BattlefieldDelegate {
 

@@ -1,5 +1,6 @@
-package de.bwulfert.engine.controller;
+package de.bwulfert.engine.api.impl;
 
+import de.bwulfert.engine.api.MoveDelegate;
 import de.bwulfert.engine.model.Player;
 
 public class PlayerController {

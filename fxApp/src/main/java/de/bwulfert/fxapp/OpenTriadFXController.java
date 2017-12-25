@@ -1,7 +1,12 @@
 package de.bwulfert.fxapp;
 
 import de.bwulfert.engine.OpenTriad;
-import de.bwulfert.engine.controller.*;
+import de.bwulfert.engine.api.BattlefieldDelegate;
+import de.bwulfert.engine.api.MoveDelegate;
+import de.bwulfert.engine.api.impl.BattlefieldController;
+import de.bwulfert.engine.api.impl.DefaultMoveDelegate;
+import de.bwulfert.engine.api.impl.PlayerController;
+import de.bwulfert.engine.api.impl.PreselectedCardChooser;
 import de.bwulfert.engine.model.Card;
 import de.bwulfert.engine.model.Player;
 import javafx.fxml.FXML;

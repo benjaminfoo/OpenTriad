@@ -1,6 +1,6 @@
 package de.bwulfert.opentriad.terminalapp;
 
-import de.bwulfert.engine.controller.MoveDelegate;
+import de.bwulfert.engine.api.MoveDelegate;
 import de.bwulfert.engine.model.Card;
 import de.bwulfert.engine.model.Deck;
 

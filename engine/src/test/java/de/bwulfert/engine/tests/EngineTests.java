@@ -1,9 +1,9 @@
 package de.bwulfert.engine.tests;
 
 import de.bwulfert.engine.OpenTriad;
-import de.bwulfert.engine.controller.BattlefieldController;
-import de.bwulfert.engine.controller.PlayerController;
-import de.bwulfert.engine.controller.PreselectedCardChooser;
+import de.bwulfert.engine.api.impl.BattlefieldController;
+import de.bwulfert.engine.api.impl.PlayerController;
+import de.bwulfert.engine.api.impl.PreselectedCardChooser;
 import de.bwulfert.engine.model.Player;
 import org.junit.Test;
 

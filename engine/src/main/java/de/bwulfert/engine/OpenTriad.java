@@ -2,7 +2,7 @@ package de.bwulfert.engine;
 
 import de.bwulfert.engine.model.Card;
 import de.bwulfert.engine.model.Deck;
-import de.bwulfert.engine.persistence.LocalCardParser;
+import de.bwulfert.engine.persistence.LocalJsonParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +21,8 @@ public class OpenTriad {
     private List<Card> cards;
 
     public void loadCards() {
-        LocalCardParser localCardParser = new LocalCardParser();
-        cards = localCardParser.parseCards(getClass().getClassLoader().getResource("cards.json").getFile());
+        LocalJsonParser localJsonParser = new LocalJsonParser();
+        cards = localJsonParser.parseCards(getClass().getClassLoader().getResource("cards.json").getFile());
     }
 
     public List<Card> getCards() {

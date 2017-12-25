@@ -1,4 +1,4 @@
-package de.bwulfert.engine.controller;
+package de.bwulfert.engine.api;
 
 import de.bwulfert.engine.model.Card;
 import de.bwulfert.engine.model.Deck;

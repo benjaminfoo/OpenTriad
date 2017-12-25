@@ -1,5 +1,7 @@
-package de.bwulfert.engine.controller;
+package de.bwulfert.engine.api.impl;
 
+import de.bwulfert.engine.api.BattlefieldDelegate;
+import de.bwulfert.engine.api.MoveDelegate;
 import de.bwulfert.engine.model.Battlefield;
 import de.bwulfert.engine.model.Card;
 

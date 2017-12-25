@@ -1,5 +1,6 @@
-package de.bwulfert.engine.controller;
+package de.bwulfert.engine.api.impl;
 
+import de.bwulfert.engine.api.CardChooser;
 import de.bwulfert.engine.model.Card;
 import de.bwulfert.engine.model.Deck;
 

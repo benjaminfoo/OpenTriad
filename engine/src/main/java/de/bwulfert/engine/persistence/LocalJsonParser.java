@@ -14,7 +14,7 @@ import java.util.List;
 
 import static de.bwulfert.engine.OpenTriad.DEFAULT_ENCODING;
 
-public class LocalCardParser implements CardParser {
+public class LocalJsonParser implements CardParser {
 
     public List<Card> parseCards(String path) {
         List<Card> cards = new ArrayList<>();

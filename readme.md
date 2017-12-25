@@ -11,7 +11,7 @@ The project is separated into the following subprojects:
  * android - Contains the refactored android implementation
 
 ### Engine
-The projects core is the 'engine'-submodule. It consists of vaarious interfaces and default implementations.
+The projects core is the 'engine'-submodule. It consists of various interfaces and default implementations.
 The engine itself isn't runnable (well the tests are) instead there are different implementations provided.
 
 Model:
@@ -21,28 +21,33 @@ Model:
  * Battlefield - Contains a two-dimensional array of cards and a "GameFinish"-flag.
  
 Controller: 
- * BattlefieldController - Contains the actual game loop
- * PlayerController - Contains the Player-Entity and the MoveDelegate
+ * BattlefieldController - Contains the actual game loop.
+ * PlayerController - Contains the Player-Entity and the MoveDelegate.
+
+Persistence:
+ * CardParser - Enables the parsing of cards.
+   * LocalJsonParser - Parses JSON-files from the hard-drive.
  
 View: 
- * No view, these are implemented in the corresponding submodules (terminalApp, fxApp, android)
+ * No view, these are implemented in the corresponding submodules (terminalApp, fxApp, android).
 
-Interfaces:
+Interfaces / Implementations:
 * CardChooser - Callbacks in order to choose cards before the actual game happens.
+  * PreselectedCardChooser - Simply returns a list with five test cards.
+  * TerminalCardChooser - Lets a user select five cards via terminal-input.
 * BattlefieldDelegate - Callbacks for events during the game.
+  * DefaultBattlefieldDelegate - Dummy implementation (for testing purposes) - doesnt actually do anything
+  * The other subprojects make use of this.
 * MoveDelegate - Callbacks for (engine-events) in order to provide a runtime-independent player-turn. This is needed for telling the engine which card a player sets on the battlefield.
+  * DefaultMoveDelegate - Default implementation - mimics turns of a player and provides information about what card has been set on the battlefield.
+  * TerminalMoveDelegate - Allows a user to input card-, x- and y- information in order to set a card.
+    
 
-Implementations
-* PreselectedCardChooser - Simply returns a list with five test cards.
-* DefaultBattlefieldDelegate - Dummy implementation (for testing purposes) - doesnt actually do anything
-* DefaultMoveDelegate - Also just a dummy implementation - mimics turns of a player and provides information about what card has been set on the battlefield.
-
-
-# Screenshots
+# Screenshots  
 ## Screenshots - Terminal 
 <img src="/docs/ingame_term.png" width="275"> 
 
-## Screenshots - Android
+## (outdated) Screenshots - Android
 <img src="/docs/main.jpg" width="275">    <img src="/docs/ingame.jpg" width="275">    <img src="/docs/menu.jpg" width="275">
 
 ## Screenshots - JavaFX
@@ -52,9 +57,8 @@ Implementations
 
 ## How to build & deploy
  * Clone this repository: git clone https://github.com/benjaminfoo/OpenTriad.git
- * Open Android Studio, Select "Open Project" and within the FileDialog, choose the build.gradle file at the project-root.
-   * Let gradle / android studio install missing packages / API levels
- * Install project on emulator or mobile device
+ * Open IntelliJ IDEA, Select "Open Project" and within the FileDialog, choose the build.gradle file at the project-root - OR - cd into the project and execute "gradle build".
+ * Install project on emulator or mobile device.
  * Thats it!
 
 ## How to add custom cards
@@ -62,10 +66,10 @@ Implementations
  ```
     {
        "name": "MyCustomCard",
-       "north": "1",
-       "west": "3",
-       "east": "3",
-       "south": "7"
+        "topPower": "5",
+        "leftPower": "3",
+        "rightPower": "1",
+        "bottomPower": "1"
      }
  ```
  2. Within '/OpenTriad/app/src/main/assets/cards/', create an image (jpg!) if your custom card. The name must be the same as you've used in the json file (e.g. for this card, an image called "MyCustomCard.jpg" has to be saved.)
