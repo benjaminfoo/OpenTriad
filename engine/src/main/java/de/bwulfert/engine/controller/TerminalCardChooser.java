@@ -1,6 +1,7 @@
 package de.bwulfert.engine.controller;
 
 import de.bwulfert.engine.modell.Card;
+import de.bwulfert.engine.modell.Deck;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +16,8 @@ public class TerminalCardChooser implements CardChooser {
         scanner = new Scanner(System.in);
     }
 
-    @Override
-    public void setAvailableCards(List<Card> availableCards) {
-        this.availableCards = availableCards;
-    }
-
     private void printAvailableCards() {
-        System.out.println("\nAvailable cars:");
+        System.out.println("\nAvailable cards:");
         for (int i = 0; i < availableCards.size(); i++) {
             Card card = availableCards.get(i);
             System.out.println(i + ": " + card.getName());
@@ -29,7 +25,7 @@ public class TerminalCardChooser implements CardChooser {
     }
 
     @Override
-    public List<Card> chooseCards() {
+    public Deck chooseCards(List<Card> availableCards) {
         List<Card> cards = new ArrayList<>(5);
         while (cards.size() != 5) {
             printAvailableCards();
@@ -46,6 +42,6 @@ public class TerminalCardChooser implements CardChooser {
             System.out.println("\t" + card.getName());
         }
 
-        return cards;
+        return new Deck("Current Cards", cards);
     }
 }

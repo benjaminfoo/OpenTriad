@@ -1,9 +1,12 @@
 package de.bwulfert.fxapp;
 
+import de.bwulfert.engine.OpenTriad;
 import de.bwulfert.engine.controller.BattlefieldController;
 import de.bwulfert.engine.controller.BattlefieldDelegate;
 import de.bwulfert.engine.controller.PlayerController;
+import de.bwulfert.engine.controller.PreselectedCardChooser;
 import de.bwulfert.engine.modell.Card;
+import de.bwulfert.engine.modell.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -45,10 +48,15 @@ public class OpenTriadFXController implements Initializable, BattlefieldDelegate
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        BattlefieldController battlefieldController = new BattlefieldController(this);
+        OpenTriad openTriad = new OpenTriad();
+        openTriad.loadCards();
 
+        BattlefieldController battlefieldController = new BattlefieldController(this);
         startGame.setOnAction(onClick -> {
-            battlefieldController.initialize();
+            battlefieldController.initialize(
+                    new PlayerController(new Player("Test Player 1", new PreselectedCardChooser().chooseCards(openTriad.getCards()))),
+                    new PlayerController(new Player("Test Player 2", new PreselectedCardChooser().chooseCards(openTriad.getCards())))
+            );
             battlefieldController.nextTurn();
         });
 

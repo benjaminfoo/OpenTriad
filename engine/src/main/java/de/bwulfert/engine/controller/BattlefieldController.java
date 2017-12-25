@@ -1,9 +1,6 @@
 package de.bwulfert.engine.controller;
 
 import de.bwulfert.engine.modell.Battlefield;
-import de.bwulfert.engine.modell.Card;
-import de.bwulfert.engine.modell.Deck;
-import de.bwulfert.engine.modell.Player;
 
 public class BattlefieldController {
 
@@ -65,22 +62,10 @@ public class BattlefieldController {
         }
     }
 
-    public void initialize() {
-        // TODO: REMOVE ME - JUST FOR TESTING, UNTIL REAL CARD-CHOOSING HAS BEEN IMPLEMENTED
-        firstPlayer = new PlayerController(new Player("Player 1", new Deck("Test-Deck",
-                new Card("Test", 1, 2, 3, 4),
-                new Card("Test", 1, 2, 3, 4),
-                new Card("Test", 1, 2, 3, 4),
-                new Card("Test", 1, 2, 3, 4),
-                new Card("Test", 1, 2, 3, 4)
-        )));
-        secondPlayer = new PlayerController(new Player("Player 2", new Deck("Test-Deck",
-                new Card("Test", 1, 2, 3, 4),
-                new Card("Test", 1, 2, 3, 4),
-                new Card("Test", 1, 2, 3, 4),
-                new Card("Test", 1, 2, 3, 4),
-                new Card("Test", 1, 2, 3, 4)
-        )));
+    public void initialize(PlayerController firstPlayer, PlayerController secondPlayer) {
+        this.firstPlayer = firstPlayer;
+        this.secondPlayer = secondPlayer;
+
         battlefield = new Battlefield();
 
         // init phase

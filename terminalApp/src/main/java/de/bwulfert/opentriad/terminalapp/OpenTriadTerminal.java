@@ -1,14 +1,19 @@
 package de.bwulfert.opentriad.terminalapp;
 
-import de.bwulfert.engine.controller.BattlefieldController;
-import de.bwulfert.engine.controller.BattlefieldDelegate;
-import de.bwulfert.engine.controller.PlayerController;
+import de.bwulfert.engine.OpenTriad;
+import de.bwulfert.engine.controller.*;
+import de.bwulfert.engine.modell.Player;
 
 public class OpenTriadTerminal implements BattlefieldDelegate {
 
     public OpenTriadTerminal() {
+        OpenTriad openTriad = new OpenTriad();
+        openTriad.loadCards();
         BattlefieldController battlefieldController = new BattlefieldController(this);
-        battlefieldController.initialize();
+        battlefieldController.initialize(
+                new PlayerController(new Player("Test Player 1", new TerminalCardChooser().chooseCards(openTriad.getCards()))),
+                new PlayerController(new Player("Test Player 2", new PreselectedCardChooser().chooseCards(openTriad.getCards())))
+        );
 
         while (!battlefieldController.getBattlefield().areAllSlotsSet()) {
             battlefieldController.nextTurn();
