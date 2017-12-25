@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane fx:id="arena" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.bwulfert.fxapp.OpenTriadFXController">
+    <center>
+        <GridPane fx:id="battleField" gridLinesVisible="true" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <padding>
+                <Insets left="8.0" right="8.0" top="8.0"/>
+            </padding>
+        </GridPane>
+    </center>
+    <bottom>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="roundCount" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308"
+                       text="Round: 1" VBox.vgrow="ALWAYS"/>
+                <HBox spacing="8.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Button fx:id="startGame" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                text="Start Game" HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="nextTurn" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                text="Next turn" HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="exitGame" layoutX="111.0" layoutY="10.0" maxWidth="1.7976931348623157E308"
+                                mnemonicParsing="false" text="Exit Game" HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="8.0" left="8.0" right="8.0" top="8.0"/>
+            </padding>
+        </VBox>
+    </bottom>
+    <left>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox fx:id="player1CardList" VBox.vgrow="ALWAYS"/>
+                <Label fx:id="player1Score" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308"
+                       text="Player 1" textAlignment="CENTER" VBox.vgrow="ALWAYS"/>
+            </children>
+        </VBox>
+    </left>
+    <right>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox fx:id="player2CardList" VBox.vgrow="ALWAYS"/>
+                <Label fx:id="player2Score" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308"
+                       text="Player 2" textAlignment="CENTER" VBox.vgrow="ALWAYS"/>
+            </children>
+        </VBox>
+    </right>
+</BorderPane>
